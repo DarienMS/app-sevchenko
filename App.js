@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity, Modal, } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity,} from 'react-native';
 import { useState } from 'react';
+import ModalCustom from './src/components/ModalCustom/ModalCustom';
+import TaskInput from './src/components/taskInput/taskInput';
 
 
 
-export default function App() {
+const App = () => {
 
   const [textItem, setTextItem] = useState("")
   const [itemList, setItemList] = useState([])
@@ -12,164 +14,140 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false)
   const [itemSelected, setItemSelected] = useState({})
 
-  const handleChangeText = (e) => {
-      setTextItem(e)
-  }
+  const handleChangeText = (text) => setTextItem(text)
 
   const addItem = () => {
-    setItemList(currentValue => [
-      ...currentValue,
-      {id: Math.random() .toString(), value: textItem}
-    ])
-
-    setTextItem("")
+      setItemList(currentValue => [
+          ...currentValue,
+          { id: Math.random().toString(), value: textItem },
+      ])
+      setTextItem("")
   }
 
   const handleModal = (item) => {
-
-    setModalVisible(true)
-    setItemSelected(item)
+      setItemSelected(item)
+      setModalVisible(true)
   }
-  
-  const handleDelete = () => {
-    const filter = itemList.filter(task => task !== itemSelected)
-    setItemList(filter)
-    setModalVisible(false)
 
+  const handleDelete = () => {
+      const filter = itemList.filter(task => task !== itemSelected)
+      setItemList(filter)
+      setModalVisible(false)
   }
 
   const handleCancelModal = () => {
-    setModalVisible(false)
-    setItemSelected({})
-
-
+      setModalVisible(false)
+      setItemSelected({})
   }
-  
-  
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.input}
-        onChangeText={handleChangeText}
-        value={textItem} />
-        <Button title='ADD' color={"black"} onPress={addItem}/>
+      <View style={styles.container}>
+          <TaskInput 
+              addItem={addItem}
+              handleChangeText={handleChangeText}
+              textItem={textItem}
+          />
 
-      </View>
-      <View style={styles.taskContainer}>
+          <View style={styles.taskContainer}>
 
-        <FlatList style={styles.flatlist} data={itemList}
+              <FlatList
+                  style={styles.flatlist}
+                  data={itemList}
                   keyExtractor={task => task.id.toString()}
-                  renderItem={({ item }) =>
-                   <TouchableOpacity style={styles.card}
-                   onPress={()=> handleModal(item)}>
-                  <Text style={styles.taskText}>{item.value}</Text>
-                  </TouchableOpacity>
+                  renderItem={({item}) =>
+                      <TouchableOpacity
+                          style={styles.card}
+                          onPress={() => handleModal(item)}
+                      >
+                          <Text style={styles.taskText}>{item.value}</Text>
+                      </TouchableOpacity>
+                  }
+              />
+          </View>
 
-
-                  }>
-          
-
-        </FlatList>
-        
-          
-        
-
+          <ModalCustom
+              handleCancelModal={handleCancelModal}
+              handleDelete={handleDelete}
+              itemSelected={itemSelected}
+              modalVisible={modalVisible}
+              
+          />
       </View>
-      
-            <Modal visible= {modalVisible} animationType='fade' transparent={true}>
-                    <View style={styles.modalStyles}>
-                      <View style={styles.modalContainer}>
-                        <View style={styles.textContainer}>
-                          <Text style={styles.taskText}>Borrar?</Text>
-                        </View>
-                        <View style={styles.textContainer}><Text style={styles.taskText}>{itemSelected.value}</Text>
-                        </View>
-                            
-                        <View style={styles.btnContainer}>
-                          <Button title='Borrar' onPress={handleDelete}></Button>
-                          <Button title='Cancelar'onPress={handleCancelModal}></Button>
-                        </View>
-                      </View>
-                    </View>
-
-            </Modal>
-    
-    </View>
-  );
+  )
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
-    flex: 1,
-    backgroundColor: "#888888"
-
+      paddingTop: 30,
+      alignItems: "center",
+      backgroundColor: "grey",
+      flex: 1
   },
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingTop: "20%"
+      flexDirection: "row",
+      width: "100%",
+      justifyContent: "center",
+      alignItems: "center",
+      paddingHorizontal: 20,
+      gap: 10,
   },
   input: {
-    borderBottomWidth: 1,
-    borderBottomColor: "black",
-    width: 300
-
+      borderBottomWidth: 1,
+      backgroundColor: "white",
+      borderBottomColor: "black",
+      width: 240,
+      fontSize: 16,
+      height: 35,
+      paddingHorizontal: 5,
   },
-  taskContainer: { 
-    alignItems: "center",
-    paddingTop: 30
-
+  taskContainer: {
+      marginTop: 15,
+      alignItems: "center",
+      width: "100%",
+      paddingVertical: 10
   },
   card: {
-    marginVertical: 20,
-    backgroundColor: "white",
-    paddingVertical: 10,
-    borderColor: "black",
-    borderWidth: 3,
-    borderRadius: 6,
-    paddingHorizontal: "20%"
-    
-    
-    
-
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "white",
+      width: "100%",
+      paddingVertical: 15,
+      marginVertical: 10,
+      borderRadius: 6,
+      borderColor: "black",
+      borderWidth: 3,
   },
   taskText: {
-        fontSize: 18,
-        fontWeight: "bold",
-
-        
-
+      fontWeight: "bold",
+      fontSize: 16
   },
   flatlist: {
-      width: "70%",
-
+      width: "90%",
   },
   modalStyles: {
-      backgroundColor: "#cccccc88",
-      flex:1,
+      backgroundColor: "grey",
+      flex: 1,
       alignItems: "center",
       justifyContent: "center"
   },
   modalContainer: {
-    backgroundColor: "white",
-    width: "80%",
-    alignItems: "center",
-    gap: 20,
-    paddingVertical: 20,
-    borderRadius: 7,
+      backgroundColor: "white",
+      width: "80%",
+      alignItems: "center",
+      gap: 20,
+      paddingVertical: 20,
+      borderRadius: 7
   },
   textContainer: {
-
+      
   },
   btnContainer: {
-    flexDirection: "row",
-    gap: 20,
-  
-    
-
+      flexDirection: "row",
+      gap: 20
   },
-});
+  textModal: {
+      fontWeight: "bold"
+  }
+})
