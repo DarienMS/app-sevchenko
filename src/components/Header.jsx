@@ -16,11 +16,13 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: 70,
-    backgroundColor: "#252222",
+    backgroundColor: "black",
     justifyContent: 'center',
     alignItems: 'center'
   },
   text: {
-    color: colors.teal200
+    color: "white",
+    fontFamily: 'Josefin',
+    fontSize: 22
   }
 })
