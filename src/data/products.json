@@ -38,71 +38,61 @@
     },
     {
         "id": 3,
-        "title": "Samsung Universe 9",
-        "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+        "title": "50/50 burger",
+        "description": "Half ground bacon, half ground beef burger patty developed by Scott Slater for Slater's 50/50 restaurant. Another variety is half kangaroo meat and half bacon.",
         "price": 1249,
         "discountPercentage": 15.46,
         "rating": 4.09,
         "stock": 36,
-        "brand": "Samsung",
-        "category": "smartphones",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+        "category": "Burgers",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Slaters_50-50_burger.jpg/124px-Slaters_50-50_burger.jpg",
         "images": [
-            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Slaters_50-50_burger.jpg/640px-Slaters_50-50_burger.jpg"
         ]
     },
     {
         "id": 4,
-        "title": "OPPOF19",
-        "description": "OPPO F19 is officially announced on April 2021.",
+        "title": "Bacon Cheeseburger",
+        "description": "Hamburger with bacon and cheese is a bacon cheeseburger, which became an official menu item at an A&W Restaurant owned by Dale Mulder in Lansing, Michigan, in 1963.",
         "price": 280,
         "discountPercentage": 17.91,
         "rating": 4.3,
         "stock": 123,
-        "brand": "OPPO",
-        "category": "smartphones",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+        "category": "Burgers",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bacon_cheeseburger.jpg/124px-Bacon_cheeseburger.jpg",
         "images": [
-            "https://cdn.dummyjson.com/product-images/4/1.jpg",
-            "https://cdn.dummyjson.com/product-images/4/2.jpg",
-            "https://cdn.dummyjson.com/product-images/4/3.jpg",
-            "https://cdn.dummyjson.com/product-images/4/4.jpg",
-            "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Bacon_cheeseburger.jpg/960px-Bacon_cheeseburger.jpg"
+           
         ]
     },
     {
         "id": 5,
-        "title": "Huawei P30",
-        "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+        "title": "Cheeseburger",
+        "description": "Hamburger accompanied with melted cheese. The term itself is a portmanteau of the words cheese and hamburger. The cheese is usually sliced, then added a short time before the hamburger finishes cooking to allow it to melt",
         "price": 499,
         "discountPercentage": 10.58,
         "rating": 4.09,
         "stock": 32,
-        "brand": "Huawei",
-        "category": "smartphones",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+        "category": "Burgers",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Double_cheese_cheeseburger_%28cropped%29.jpg/124px-Double_cheese_cheeseburger_%28cropped%29.jpg",
         "images": [
-            "https://cdn.dummyjson.com/product-images/5/1.jpg",
-            "https://cdn.dummyjson.com/product-images/5/2.jpg",
-            "https://cdn.dummyjson.com/product-images/5/3.jpg"
+            "https://upload.wikimedia.org/wikipedia/commons/8/80/Double_cheese_cheeseburger_%28cropped%29.jpg"
+            
         ]
     },
     {
         "id": 6,
-        "title": "MacBook Pro",
-        "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+        "title": "Pastrami burger",
+        "description": "A burger with cheese and thin-sliced pastrami on top,[10] commonly served at Greek burger restaurants in Utah",
         "price": 1749,
         "discountPercentage": 11.02,
         "rating": 4.57,
         "stock": 83,
-        "brand": "Apple",
-        "category": "laptops",
-        "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+        "category": "Burgers",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pastrami_cheeseburger.jpg/124px-Pastrami_cheeseburger.jpg",
         "images": [
-            "https://cdn.dummyjson.com/product-images/6/1.png",
-            "https://cdn.dummyjson.com/product-images/6/2.jpg",
-            "https://cdn.dummyjson.com/product-images/6/3.png",
-            "https://cdn.dummyjson.com/product-images/6/4.jpg"
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pastrami_cheeseburger.jpg/812px-Pastrami_cheeseburger.jpg"
+            
         ]
     },
     {

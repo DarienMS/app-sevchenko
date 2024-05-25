@@ -3,7 +3,7 @@ import { colors } from "../constants/colors"
 import CategoryItem from "../components/CategoryItem"
 import categories from "../data/categories.json"
 
-const Home = ({ setCategorySelected }) => {
+const Home = ({ route, navigation}) => {
   return (
     <View style={styles.flatListContainer}>
       <FlatList
@@ -12,7 +12,7 @@ const Home = ({ setCategorySelected }) => {
         data={categories.sort()}
         renderItem={({ item }) => (
           <CategoryItem 
-            selectCategory={setCategorySelected} 
+            navigation={navigation} 
             category={item} 
           />
         )}
@@ -26,7 +26,7 @@ export default Home
 const styles = StyleSheet.create({
   flatListContainer: {
     width: "100%",
-    backgroundColor: "#FDEBD0",
+    backgroundColor: "#F9E28E",
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",

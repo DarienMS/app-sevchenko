@@ -1,16 +1,19 @@
-import { Image, StyleSheet, Text, Pressable } from 'react-native'
-import React from 'react'
-import Card from './Card'
-import { colors } from '../constants/colors'
+import { Image, StyleSheet, Text, Pressable } from "react-native"
+import React from "react"
+import Card from "./Card"
+import { colors } from "../constants/colors"
 
 const ProductItem = ({
   product,
   setProductSelected = () => {},
-  setItemIdSelected = () => {},
+  navigation,
 }) => {
   return (
     <Card style={styles.additionalStylesCard}>
-      <Pressable style={styles.pressable} onPress ={()=> setItemIdSelected(product.id)}>
+      <Pressable
+        style={styles.pressable}
+        onPress={() => navigation.navigate('ItemDetail', {productId: product.id})}
+      >
         <Text style={styles.textCategory}>{product.title}</Text>
         <Image
           resizeMode="cover"
@@ -34,10 +37,11 @@ const styles = StyleSheet.create({
     height: 120,
     width: 300,
     margin: 10,
+    backgroundColor: "black"
   },
   textCategory: {
     width: "70%",
-    color: "black",
+    color: "white",
   },
   pressable: {
     width: "100%",

@@ -9,31 +9,33 @@ import {
 import React, { useEffect, useState } from "react"
 import allProducts from "../data/products.json"
 
-const ItemDetail = ({ idSelected, setProductSelected }) => {
-
+const ItemDetail = ({ route, navigation }) => {
 
   const [product, setProduct] = useState(null)
   const [orientation, setOrientation] = useState("portrait")
   const { width, height } = useWindowDimensions()
 
+  const {productId: idSelected} = route.params
+
+  //Landscape = horizontal
+  //Portrait = vertical
 
   useEffect(() => {
     if (width > height) setOrientation("landscape")
     else setOrientation("portrait")
   }, [width, height])
 
-
   useEffect(() => {
+    //Encontrar el producto por su id
     const productSelected = allProducts.find(
       (product) => product.id === idSelected
     )
     setProduct(productSelected)
   }, [idSelected])
 
-
   return (
-    <View style={styles.buttonContainer}>
-      <Button color={"black"} onPress={() => setProductSelected("")} title="Back" />
+    <View style={styles.ItemDetailContainer}>
+      
       {product ? (
         <View
           style={
@@ -48,13 +50,19 @@ const ItemDetail = ({ idSelected, setProductSelected }) => {
             resizeMode="cover"
           />
           <View style={orientation === "portrait" ? styles.textContainer : styles.textContainerLandscape}>
-            <Text>{product.title}</Text>
-            <Text>{product.description}</Text>
+            <Text style={styles.title}>{product.title}</Text>
+            <Text style={styles.description}>{product.description}</Text>
             <Text style={styles.price}>${product.price}</Text>
-            <Button color={"black"} title="Add cart"></Button>
+            <Button title="Add cart" color={"black"}></Button>
+           
           </View>
+          
         </View>
       ) : null}
+      <View style={styles.BackBtn}>
+        <Button onPress={() => navigation.goBack()} title="Go back" color={"black"} />
+        </View>
+
     </View>
   )
 }
@@ -62,14 +70,23 @@ const ItemDetail = ({ idSelected, setProductSelected }) => {
 export default ItemDetail
 
 const styles = StyleSheet.create({
+
+  ItemDetailContainer:{
+    
+    backgroundColor: "#F9E28E",
+    flex: 1,
+    
+
+  },
   mainContainer: {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
     padding: 10,
-    backgroundColor:"white",
-    
-
+    backgroundColor: "#F9E28E",
+    marginTop: 20,
+    width: "100%"
+  
   },
   mainContainerLandscape: {
     flexDirection: "row",
@@ -81,6 +98,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 250,
+    
   },
   imageLandscape: {
     width: '45%',
@@ -88,6 +106,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: "column",
+    width: "100%"
   },
 
   textContainerLandscape: {
@@ -99,10 +118,23 @@ const styles = StyleSheet.create({
   },
   price: {
     textAlign: 'right',
-    width: '100%'
+    width: '100%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 18,
   },
-  buttonContainer: {
-    paddingTop: 15,
+  description :{
+    marginTop: 10,
+    fontSize: 14,
+  },
+  title: {
+   fontSize: 20,
+
+  },
+  BackBtn: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
 
   }
 })

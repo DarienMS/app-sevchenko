@@ -6,25 +6,26 @@ import Search from "../components/Search"
 import { useState, useEffect } from "react"
 
 const ItemListCategory = ({
-  categorySelected = "",
   setCategorySelected = () => {},
-  setItemIdSelected = () => {}
+  navigation,
+  route
 }) => {
   const [keyWord, setKeyword] = useState("")
   const [productsFiltered, setProductsFiltered] = useState([])
   const [error, setError] = useState("")
 
+  const {category: categorySelected} = route.params
   useEffect(() => {
+    //Products filtered by category
 
-
-
+    //No digits validation
     const regexDigits = /\d/
     const hasDigits = regexDigits.test(keyWord)
     if (hasDigits) {
       setError("Don't use digits")
       return
     }
-
+    //3 or more characters
     const regexThreeOrMore = /[a-zA-Z]{3,}/
     const hasThreeOrMoreChars = regexThreeOrMore.test(keyWord)
 
@@ -36,7 +37,7 @@ const ItemListCategory = ({
     const productsPrefiltered = products.filter(
       (product) => product.category === categorySelected
     )
-    
+    //Product filtered by name
     const productsFilter = productsPrefiltered.filter((product) =>
       product.title.toLocaleLowerCase().includes(keyWord.toLocaleLowerCase())
     )
@@ -49,12 +50,13 @@ const ItemListCategory = ({
       <Search
         error={error}
         onSearch={setKeyword}
-        goBack={() => setCategorySelected("")}
+        goBack={() => navigation.goBack()}
       />
       <FlatList
-        
         data={productsFiltered}
-        renderItem={({ item }) => <ProductItem product={item} setItemIdSelected= {setItemIdSelected}/>}
+        renderItem={({ item }) => (
+          <ProductItem product={item} navigation={navigation}/>
+        )}
         keyExtractor={(producto) => producto.id}
       />
     </View>
@@ -63,15 +65,14 @@ const ItemListCategory = ({
 
 export default ItemListCategory
 
-
 const styles = StyleSheet.create({
   flatListContainer: {
-    width: '100%',
-    backgroundColor: "#FDEBD0",
+    width: "100%",
+    backgroundColor: "#EDD888",
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
   },
 })
