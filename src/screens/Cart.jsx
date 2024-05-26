@@ -1,35 +1,33 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native"
+import { FlatList, StyleSheet, Text, View, Button  } from "react-native"
 import React from "react"
-// import CartData from "../data/cart.json"
 import CartItem from "../components/CartItem"
-import { useSelector } from "react-redux"
-// import { useSelector } from "react-redux"
-// import { usePostOrderMutation } from "../services/shopService"
+import { useDispatch, useSelector } from "react-redux"
+import { usePostOrderMutation } from "../services/shopService"
+import { cleanCart, removeCartItem } from "../features/Cart/cartSlice"
+
+
 
 const Cart = () => {
-    // console.log(CartData);
 
+    const HandleRemoveCartItem = () =>{
+        useDispatch(removeCartItem())
+
+    }
+    const {localId} = useSelector(state => state.auth.value)
     const {items: CartData, total} = useSelector(state => state.cart.value)
-    /* const { items: cartItems, total } = useSelector((state) => state.cart.value)
-    const [triggerPost, result] = usePostOrderMutation()
+    dispatch = useDispatch
+    const [triggerPostOrder, result] = usePostOrderMutation()
+    
 
-    console.log(cartItems)
-    console.log(result) */
+    const onConfirmOrder = () => {
+        triggerPostOrder({items: CartData, user: localId, total});
+        dispatch(cleanCart());
+        
+    
+    }
+  
 
-    /* let total = 0
-    for (const currentItem of CartData) {
-        console.log(currentItem.id);
-        total += currentItem.price * currentItem.quantity
-    } */
 
-    /* onConfirm = () => {
-        triggerPost({
-            total,
-            items: cartItems,
-            user: "userLoggedId",
-            date: new Date().toLocaleString(),
-        })
-    } */
 
     return (
         <View style={styles.container}>
@@ -41,14 +39,15 @@ const Cart = () => {
                 }}
             />
             <View style={styles.totalContainer}>
-                <Pressable onPress={() => {}}>
-                    <Text>Confirm</Text>
-                </Pressable>
-                <Text>Total: ${total}</Text>
+                <Text style={styles.totalText}>Total: ${total}</Text>
+            </View>
+            <View>
+                <Button color={"black"} onPress={onConfirmOrder} title="Confirm"></Button>
             </View>
         </View>
     )
 }
+
 
 export default Cart
 
@@ -65,5 +64,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#EDD888",
         marginBottom: 20,
     },
-    
+    totalText: {
+        fontFamily: "Josefin",
+        fontSize: 20,
+        fontWeight: "bold",
+    }
 })

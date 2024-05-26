@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, Pressable } from "react-native"
 import React from "react"
 import Card from "./Card"
-import { colors } from "../constants/colors"
 import { useDispatch } from "react-redux"
 import { setIdSelected } from "../features/Shop/shopSlice"
 

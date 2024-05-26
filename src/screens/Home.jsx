@@ -1,18 +1,14 @@
-import { FlatList, StyleSheet, Text, View } from "react-native"
-import { colors } from "../constants/colors"
+import { FlatList, StyleSheet, View } from "react-native"
 import CategoryItem from "../components/CategoryItem"
-// import categories from "../data/categories.json"
-import Counter from "../components/Counter"
 import { useGetCategoriesQuery } from "../services/shopService"
 
 const Home = ({ route, navigation}) => {
   const {data: categories, error, isLoading} = useGetCategoriesQuery()
 
-  // console.log(categories2);
-
+  
   return (
     <View style={styles.flatListContainer}>
-      {/* <Counter/> */}
+      
       <FlatList
         showsVerticalScrollIndicator={false}
         keyExtractor={(elemntoDeMiArray) => elemntoDeMiArray}
@@ -27,6 +23,7 @@ const Home = ({ route, navigation}) => {
     </View>
   )
 }
+
 export default Home
 
 const styles = StyleSheet.create({

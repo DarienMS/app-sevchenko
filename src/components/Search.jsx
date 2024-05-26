@@ -1,14 +1,16 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native"
 import React, { useState } from "react"
 import { FontAwesome5 } from "@expo/vector-icons"
-import { AntDesign } from "@expo/vector-icons"
-import { colors } from "../constants/colors"
 import { FontAwesome6 } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Search = ({ onSearch = () => {}, error = "", goBack = () => {} }) => {
   const [keyword, setKeyword] = useState("")
   return (
     <View style={styles.container}>
+       <Pressable onPress={goBack}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </Pressable>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -20,14 +22,12 @@ const Search = ({ onSearch = () => {}, error = "", goBack = () => {} }) => {
 
       </View>
       <Pressable onPress={() => onSearch(keyword)}>
-        <FontAwesome6 name="searchengin" size={24} color="white" />
+        <FontAwesome6 name="searchengin" size={24} color="black" />
       </Pressable>
       <Pressable onPress={() => setKeyword("")}>
-        <FontAwesome5 name="eraser" size={24} color="white" />
+        <FontAwesome5 name="eraser" size={24} color="black" />
       </Pressable>
-      <Pressable onPress={goBack}>
-        <AntDesign name="back" size={24} color="white" />
-      </Pressable>
+     
     </View>
   )
 }

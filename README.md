@@ -1,15 +1,11 @@
-{
-  "name": "clase-04",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
-  },
-  "dependencies": {
-    "@expo/metro-runtime": "~3.1.3",
+
+# FastFood Ecommerce
+
+Android application developed in react native using a "Fast Food" theme
+
+dependencies:
+
+ "    @expo/metro-runtime": "~3.1.3",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
@@ -30,10 +26,12 @@
     "react-redux": "^9.1.1",
     "yup": "^1.4.0",
     "expo-sqlite": "~13.4.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "react": "^18.2.0"
-  },
-  "private": true
-}
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run android
+```
+
+You need to simulate an android device or have one to use.

@@ -2,7 +2,7 @@ import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native"
 import React from "react"
 import { colors } from "../constants/colors"
 import Card from "./Card"
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { setCategorySelected } from "../features/Shop/shopSlice"
 
 const CategoryItem = ({ category, navigation }) => {
@@ -15,7 +15,7 @@ const CategoryItem = ({ category, navigation }) => {
   }
 
   return (
-    <Card style={{ marginVertical: 10, marginHorizontal: 10 }}>
+    <Card style={styles.CategoryCard}>
       <Pressable onPress={handleNavigate}>
         <Text style={styles.text}>{category}</Text>
       </Pressable>
@@ -27,8 +27,13 @@ export default CategoryItem
 
 const styles = StyleSheet.create({
   text: {
-    color: colors.platinum,
+    color: "white",
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 25,
   },
+  CategoryCard: {
+    marginVertical: 15,
+    
+    
+  }
 })

@@ -2,14 +2,12 @@ import React from "react"
 import { StyleSheet, View } from "react-native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import HomeStackNavigator from "./HomeStackNavigator"
-import { colors } from "../constants/colors"
 import CartStack from "./CartStackNavigator"
 import OrderStack from "./OrderStackNavigator"
 import Header from "../components/Header"
 import { FontAwesome5, FontAwesome6 } from "@expo/vector-icons"
 import { Ionicons } from "@expo/vector-icons"
-import CartTemp from "../screens/CartTemp"
-import OrdersTemp from "../screens/OrdersTemp"
+import MyProfileStackNavigator from "./MyProfileStackNavigator"
 
 const Tab = createBottomTabNavigator()
 
@@ -71,9 +69,19 @@ const BottomTabNavigator = () => {
                     },
                 }}
             />
-            
-
-            
+            <Tab.Screen 
+                name="My profile"
+                component={MyProfileStackNavigator}
+                options={{
+                    tabBarIcon: ({ focused }) => {
+                        return (
+                            <View>
+                                <Ionicons name="person-circle" size={24} color={ focused ? 'white' : "#F9E28E"}  />
+                            </View>
+                        )
+                    },
+                }}
+            />
         </Tab.Navigator>
     )
 }
@@ -87,5 +95,6 @@ const styles = StyleSheet.create({
         elevation: 4,
         borderRadius: 15,
         height: 60,
+        marginTop: 10,
     },
 })

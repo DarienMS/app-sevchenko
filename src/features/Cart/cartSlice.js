@@ -17,7 +17,6 @@ export const cartSlice = createSlice({
                 (item) => item.id === payload.id
             )
             if (productRepeated) {
-                console.log(productRepeated)
                 const itemsUpdated = state.value.items.map((item) => {
                     if (item.id === payload.id) {
                         item.quantity += payload.quantity
@@ -52,9 +51,27 @@ export const cartSlice = createSlice({
         },
         removeCartItem: (state, { payload }) => {
             //Logic to remove product
+            state.value.items = state.value.items.filter(
+                (item) => item.id !== payload.id
+            );
+            const total = state.value.items.reduce(
+                (acc, currentItem) =>
+                    (acc += currentItem.price * currentItem.quantity),
+                0
+            )
+            state.value = {
+                ...state.value,
+                total,
+                updatedAt: new Date().toLocaleString()
+            }
+        },
+        cleanCart: (state) => {
+            
+            state.value.total = null;
+            state.value.items = [];
         },
     },
 })
 
-export const { addCartItem, removeCartItem } = cartSlice.actions
+export const { addCartItem, removeCartItem, cleanCart } = cartSlice.actions
 export default cartSlice.reducer
