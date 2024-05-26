@@ -25,7 +25,7 @@ const BottomTabNavigator = () => {
             })}
         >
             <Tab.Screen
-                name="Fast Food"
+                name="Shop"
                 component={HomeStackNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => {
@@ -34,7 +34,7 @@ const BottomTabNavigator = () => {
                                 <FontAwesome5
                                     name="store"
                                     size={24}
-                                    color={focused ? "white" : "#EDD888"}
+                                    color={focused ? "white" : "#F9E28E"}
                                 />
                             </View>
                         )
@@ -51,7 +51,7 @@ const BottomTabNavigator = () => {
                                 <FontAwesome6
                                     name="cart-shopping"
                                     size={24}
-                                    color={focused ? "white" : "#EDD888"}
+                                    color={focused ? "white" : "#F9E28E"}
                                 />
                             </View>
                         )
@@ -65,7 +65,7 @@ const BottomTabNavigator = () => {
                     tabBarIcon: ({ focused }) => {
                         return (
                             <View>
-                                <Ionicons name="receipt-outline" size={24} color={ focused ? 'white' : "#EDD888"} />
+                                <Ionicons name="receipt-outline" size={24} color={ focused ? 'white' : "#F9E28E"} />
                             </View>
                         )
                     },

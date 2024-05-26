@@ -5,7 +5,7 @@ import OrderItem from '../components/OrderItem'
 
 const OrderScreen = () => {
   return (
-    <View style={styles.OrdersContainer}>
+    <View>
         <FlatList
             data={OrderData}
             keyExtractor={orderItem => orderItem.id}

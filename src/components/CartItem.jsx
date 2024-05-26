@@ -16,6 +16,7 @@ const CartItem = ({ cartItem }) => {
     );
 };
 
+
 export default CartItem;
 
 const styles = StyleSheet.create({
