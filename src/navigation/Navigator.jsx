@@ -38,4 +38,7 @@ const Navigator = () => {
 
 export default Navigator
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+ 
+
+})

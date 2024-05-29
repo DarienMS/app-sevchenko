@@ -92,16 +92,17 @@ const styles = StyleSheet.create({
         height: "100%",
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#F9E28E"
     },
     container: {
         width: "90%",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: colors.platinum,
         gap: 15,
         paddingVertical: 20,
         borderRadius: 10,
+        backgroundColor: "white"
     },
     title: {
         fontSize: 22,

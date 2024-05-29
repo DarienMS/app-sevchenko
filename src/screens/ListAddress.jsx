@@ -14,10 +14,13 @@ const ListAddress = ({ navigation }) => {
    
 
     return location ? (
+        <View style={styles.container}>
         <AddressItem
             location={location}
             navigation={navigation}
+            
         />
+        </View>
     ) : (
         <View style={styles.container}>
             <Text style={styles.text}>No location set</Text>
@@ -35,6 +38,8 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: "flex-start",
         alignItems: "center",
+        backgroundColor: "#F9E28E",
+        flex: 1,
     },
     text: {
         paddingVertical: 20,

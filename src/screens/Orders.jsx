@@ -42,7 +42,9 @@ export default OrderScreen
 const styles = StyleSheet.create({
 
   OrdersContainer: {
-    backgroundColor: "#F9E28E"
+    backgroundColor: "#F9E28E",
+    flex: 1,
+    
   }
   
 

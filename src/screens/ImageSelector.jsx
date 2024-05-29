@@ -23,9 +23,7 @@ const ImageSelector = ({ navigation }) => {
 
     const dispatch = useDispatch()
 
-    /* const [triggerSaveImage, resultSaveImage] = usePostProfileImageMutation();
-    const dispatch = useDispatch();
-    const { localId } = useSelector((state) => state.auth.value); */
+    
 
     const verifyCameraPermissions = async () => {
         const {granted} = await ImagePicker.requestCameraPermissionsAsync()
@@ -36,14 +34,7 @@ const ImageSelector = ({ navigation }) => {
         const {granted} = await ImagePicker.requestMediaLibraryPermissionsAsync()
         return granted
     }
-    /* const verifyCameraPermissions = async () => {
-        const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-        if (!granted) {
-            return false;
-        }
-        return true;
-    };
- */
+   
 
     const pickLibraryImage = async () => {
         try {
@@ -145,8 +136,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         gap: 20,
-        marginTop: 20,
-        backgroundColor: "#F9E28E"
+        backgroundColor: "#F9E28E",
+        paddingTop: 20
     },
     image: {
         width: 200,

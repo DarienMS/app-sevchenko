@@ -3,10 +3,13 @@ import React, { useEffect, useState } from "react"
 import * as Location from "expo-location"
 
 import AddButton from "../components/AddButton"
+/* import { usePostUserLocationMutation } from "../Services/shopServices";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserLocation } from "../Features/User/userSlice"; */
 import MapPreview from "../components/MapPreview"
 import { googleMapsApiKey } from "../databases/googleMaps"
 import { colors } from "../constants/colors"
-import {  usePostLocationMutation } from "../services/shopService"
+import { useGetLocationQuery, usePostLocationMutation } from "../services/shopService"
 import { useSelector } from "react-redux"
 
 const LocationSelector = ({ navigation }) => {
@@ -16,9 +19,10 @@ const LocationSelector = ({ navigation }) => {
     const [triggerPostUserLocation, result] = usePostLocationMutation()
     const {localId} = useSelector(state => state.auth.value)
 
-   
+    
 
     const onConfirmAddress = () => {
+        
 
         const date = new Date()
 
@@ -31,8 +35,12 @@ const LocationSelector = ({ navigation }) => {
             },
             localId: localId
         })
-        
+       
     }
+    const confirmAndBack = () => {
+        onConfirmAddress();
+        navigation.goBack();
+    };
 
     //Location requested on mount
     useEffect(() => {
@@ -43,7 +51,7 @@ const LocationSelector = ({ navigation }) => {
     
                 if (status === "granted") {
                     let location = await Location.getCurrentPositionAsync({})
-                    
+                    //console.log(location)
                     setLocation({
                         latitude: location.coords.latitude,
                         longitude: location.coords.longitude
@@ -52,12 +60,10 @@ const LocationSelector = ({ navigation }) => {
             } catch (error) {
                 //console.log(error);
             }
-        })
-
-        
+        })()
 
        
-    },)
+    }, [])
 
     //Reverse geocoding
     useEffect(() => {
@@ -90,7 +96,7 @@ const LocationSelector = ({ navigation }) => {
                         Formatted address: {address}
                     </Text>
                     <AddButton
-                        onPress={onConfirmAddress}
+                        onPress={confirmAndBack}
                         title="Confirm address"
                     />
                 </>
@@ -112,6 +118,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "flex-start",
+        backgroundColor: "#F9E28E"
     },
     text: {
         paddingTop: 20,
@@ -126,6 +133,8 @@ const styles = StyleSheet.create({
         padding: 10,
         justifyContent: "center",
         alignItems: "center",
+       
+    
     },
     address: {
         padding: 10,
